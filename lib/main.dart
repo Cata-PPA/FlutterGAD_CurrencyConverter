@@ -53,7 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void convertor() {
     setState(() {
       money = conversionFactor * leiAmount;
-      print(money);
       moneyString = money.toStringAsFixed(2);
     });
   }
@@ -63,12 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Currency Converter'),
+        title: const Text('Currency Converter'),
       ),
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image.asset('assets/exchange.PNG'),
             Text(
@@ -76,10 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextField(
               controller: controller,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (String value) {
                 setState(() {
-                  if (value.length != 0) {
+                  if (value.isNotEmpty) {
                     if (double.tryParse(value) == null) {
                       errorText = 'This is not a number. Insert amount in numbers';
                     } else {
@@ -102,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 errorText: errorText,
                 suffixIcon: IconButton(
                   onPressed: controller.clear,
-                  icon: Icon(Icons.clear),
+                  icon: const Icon(Icons.clear),
                 ),
               ),
             ),
@@ -114,17 +112,20 @@ class _MyHomePageState extends State<MyHomePage> {
               alignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                    onPressed: exchangeToDollar,
-                    child: const Text('Dollar')),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                  onPressed: exchangeToDollar,
+                  child: const Text('Dollar'),
+                ),
                 TextButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-                    onPressed: exchangeToEuro,
-                    child: const Text('Euro')),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
+                  onPressed: exchangeToEuro,
+                  child: const Text('Euro'),
+                ),
                 ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    onPressed: convertor,
-                    child: const Text('Convert Amount')),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  onPressed: convertor,
+                  child: const Text('Convert Amount'),
+                ),
               ],
             )
           ],
