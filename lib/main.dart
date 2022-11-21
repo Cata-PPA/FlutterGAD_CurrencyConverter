@@ -81,8 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 setState(() {
                   if (value.length != 0) {
                     if (double.tryParse(value) == null) {
-                      errorText =
-                          'This is not a number. Insert amount in numbers';
+                      errorText = 'This is not a number. Insert amount in numbers';
                     } else {
                       if (double.tryParse(value)! < 0) {
                         errorText = 'Insert a positive amount';
@@ -115,15 +114,15 @@ class _MyHomePageState extends State<MyHomePage> {
               alignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.green),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                     onPressed: exchangeToDollar,
                     child: const Text('Dollar')),
                 TextButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.blueAccent),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
                     onPressed: exchangeToEuro,
                     child: const Text('Euro')),
                 ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.red),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     onPressed: convertor,
                     child: const Text('Convert Amount')),
               ],
